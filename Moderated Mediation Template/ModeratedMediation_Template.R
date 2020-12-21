@@ -65,3 +65,5 @@ a+geom_rect(xmin=36,ymin=90,xmax=64,ymax=97,
 
 ggsave("model8_moderatedmediation_template.jpg",
        plot = last_plot())
+
+# credits: https://rstudio-pubs-static.s3.amazonaws.com/461686_e1fba6bd54864c18a292ac4fc90028ec.html
