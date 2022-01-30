@@ -1,0 +1,57 @@
+---
+title: "Correlational Network Analysis"
+subtitle: "An example from the iris data"
+author: "Soundarya S"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+# Libraries
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(corrr)
+```
+# Data
+
+```{r}
+head(iris,5)
+```
+
+We shall calculate correlations among variables of interest (should be numericals)
+
+```{r}
+df <- iris %>% 
+  select(-Species)
+corresults <- correlate(df)
+
+corresults <- fashion(corresults)
+corresults
+```
+
+Creating a network
+
+```{r}
+df %>% correlate() %>% 
+  network_plot()
+
+```
+
+```{r fig.margin = TRUE}
+df %>% correlate() %>% 
+  network_plot(min_cor = 0.5)
+```
+
+
+
+
+
+
+
